@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome - Marinduque State University</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <div class="login-card" id="loginCard">
+
+      <div id="loginView">
+        <div class="brand-header">
+          <img src="/src/assets/marsuLogo.png" alt="MarSU Logo" class="brand-logo">
+          <p>Marinduque State University</p>
+        </div>
+
+        <form id="loginForm" autocomplete="off">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter your username" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+          </div>
+
+          <button type="submit" class="btn-login">Sign In</button>
+        </form>
+      </div>
+
+      <div id="successView" class="hidden">
+        <div class="brand-header">
+          <img src="/src/assets/marsuLogo.png" alt="MarSU Logo" class="brand-logo brand-logo-success">
+          <h1 class="success-title">Welcome Back</h1>
+          <p>Access Granted to <strong id="displayUsername"></strong></p>
+          <p class="success-subtitle">MarSU Presentation Demo Dashboard Ready.</p>
+        </div>
+      </div>
+
+      <div id="feedbackMessage" class="message"></div>
+
+      <div class="card-footer">
+        <span>Build a brighter future with MarSU</span>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

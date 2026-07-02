@@ -1,0 +1,226 @@
+:root {
+  /* The 60-30-10 Palette */
+  --brand-burgundy-deep: #2d030f;
+  --brand-burgundy-main: #5c061f;
+  --accent-gold: #d4af37;
+  --accent-gold-hover: #bfa030;
+
+  /* Structural & Utility Colors */
+  --surface-white: #ffffff;
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --error-color: #e53e3e;
+  --success-color: #38a169;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/* 60% DOMINANT: Deep atmospheric Burgundy environment */
+body {
+  background: radial-gradient(
+    circle at center,
+    var(--brand-burgundy-main) 0%,
+    var(--brand-burgundy-deep) 100%
+  );
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-primary);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Subtle organic ambient highlights */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  z-index: 0;
+  filter: blur(100px);
+  opacity: 0.12;
+}
+body::before {
+  top: -5%;
+  left: 10%;
+  background: var(--accent-gold);
+}
+body::after {
+  bottom: -5%;
+  right: 10%;
+  background: #fff;
+}
+
+#app {
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  z-index: 10;
+}
+
+/* 30% SECONDARY: Clean structural card layout & balancing values */
+.login-card {
+  background: var(--surface-white);
+  padding: 45px 35px;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  border: 2px solid transparent;
+  text-align: center;
+  transition:
+    border-color 0.4s ease,
+    transform 0.4s ease;
+}
+
+/* Brand Header */
+.brand-header p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+}
+
+.brand-logo {
+  width: 110px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+}
+
+/* Form Styling */
+.form-group {
+  text-align: left;
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  letter-spacing: -0.2px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  outline: none;
+  background: #f8fafc;
+  color: var(--text-primary);
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+/* 10% ACCENT: Interactive border activation */
+.form-group input:focus {
+  border-color: var(--accent-gold);
+  background: var(--surface-white);
+}
+
+/* 10% ACCENT: Action-driving gold components */
+.btn-login {
+  width: 100%;
+  padding: 15px;
+  background: var(--accent-gold);
+  color: var(
+    --brand-burgundy-deep
+  ); /* Dark text on gold button for elite contrast */
+  border: none;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition:
+    transform 0.1s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+  margin-top: 12px;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+}
+
+.btn-login:hover {
+  background: var(--accent-gold-hover);
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4);
+}
+
+.btn-login:active {
+  transform: scale(0.98);
+}
+
+/* Success View UI Enhancements */
+.success-title {
+  color: var(--success-color);
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+.success-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 15px;
+}
+
+.brand-logo-success {
+  filter: drop-shadow(0 4px 12px rgba(56, 161, 105, 0.35));
+}
+
+/* Utility Helpers */
+.message {
+  margin-top: 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-height: 22px;
+}
+
+.error {
+  color: var(--error-color);
+}
+.success {
+  color: var(--success-color);
+}
+.hidden {
+  display: none !important;
+}
+
+.card-footer {
+  margin-top: 35px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border-top: 1px solid #f1f5f9;
+  padding-top: 18px;
+}
+
+/* Shaking Sequence for Login Errors */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+}
