@@ -24,7 +24,7 @@ loginForm.addEventListener("submit", (e) => {
 
     // Clean redirect hand-off
     setTimeout(() => {
-      window.location.href = "/home.html";
+      window.location.href = "/loadingempower.html";
     }, 1200);
   }
 });

@@ -72,29 +72,18 @@
         }
 
         .img {
-            position: relative !important;
-            display: block !important;
-            left: auto !important;
-            top: auto !important;
-            margin-left: 0 !important;
-            margin-top: 0 !important;
-            transform: none !important;
+            position: relative;
+            display: block;
+            transform: none;
+            width: 380px;
+            height: 214px;
+            margin-right: 45px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
 
-            width: 380px !important;
-            height: 214px !important;
-            margin-right: 45px !important;
-            flex-shrink: 0 !important;
-
-            background-size: cover !important;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-            border-radius: 12px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
-
-            transition: transform 0.3s ease, opacity 0.3s ease !important;
+            transition: transform 0.3s ease, opacity 0.3s ease;
             pointer-events: auto;
-
-            object-fit: contain !important;
         }
 
         /* ==========================================
@@ -162,18 +151,18 @@
            ========================================== */
         $(document).ready(function () {
             const screenshotImages = [
-                '/src/assets/carousell/Screenshots_fix/Accomplishments-Rankings.png',
-                '/src/assets/carousell/Screenshots_fix/Achievements-Board_Examination_Metrics.png',
-                '/src/assets/carousell/Screenshots_fix/Budget_Util-BUR.png',
-                '/src/assets/carousell/Screenshots_fix/Dashboard.png',
-                '/src/assets/carousell/Screenshots_fix/Enrollment-Enrollment_Growth.png',
-                '/src/assets/carousell/Screenshots_fix/Enrollment-Enrollment_Trends.png',
-                '/src/assets/carousell/Screenshots_fix/High_Ed-Employability_of_Graduates.png',
-                '/src/assets/carousell/Screenshots_fix/Higher_Ed-Detailed_Status.png',
-                '/src/assets/carousell/Screenshots_fix/Higher_Ed-Institutional_Accreditation.png',
-                '/src/assets/carousell/Screenshots_fix/Login-Loading_Screen.png',
-                '/src/assets/carousell/Screenshots_fix/Login-Modal.png',
-                '/src/assets/carousell/Screenshots_fix/Research.png'
+                '/src/assets/carousell/1.png',
+                '/src/assets/carousell/2.png',
+                '/src/assets/carousell/3.png',
+                '/src/assets/carousell/4.png',
+                '/src/assets/carousell/5.png',
+                '/src/assets/carousell/6.png',
+                '/src/assets/carousell/7.png',
+                '/src/assets/carousell/8.png',
+                '/src/assets/carousell/9.png',
+                '/src/assets/carousell/10.png',
+                '/src/assets/carousell/11.png',
+                '/src/assets/carousell/12.png'
             ];
 
             const totalItems = screenshotImages.length;
@@ -227,6 +216,11 @@
                 }, 50);
             });
         });
+    </script>
+    <script>
+        setTimeout(() => {
+            window.location.href = "/home.html";
+        }, 6000);
     </script>
 </body>
 
