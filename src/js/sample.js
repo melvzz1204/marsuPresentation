@@ -1,12 +1,15 @@
 // Expanded to 12 members to match your 12 images!
 const teamMembers = [
   {
-    name: "Global Recognition Matrix",
-    role: "Sustainability & Innovation Rankings",
+    name: "Presidential Dashboard",
+    role: "Organizational Data Overview",
   }, // 1.png
   { name: "Board Examination Metrics", role: "Passing Efficiency Analysis" }, // 2.png
   { name: "Budget Utilization Rate", role: "Fiscal Accountability Matrix" }, // 3.png
-  { name: "Presidential Dashboard", role: "Organizational Data Overview" }, // 4.png
+  {
+    name: "Global Recognition Matrix",
+    role: " Sustainability & Innovation Rankings",
+  }, // 4.png
   { name: "Multi-Year Enrollment", role: "System Registration Trace" }, // 5.png
   { name: "Campus Enrollment Trends", role: "Registrar Program Demographics" }, // 6.png
   { name: "Employability of Graduates", role: "Tracer Study Matrix" }, // 7.png
