@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marsu</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <style>
+        /* ==========================================
+           Global & Stage Setup
+           ========================================== */
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #660033;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        /* Base override safeguard */
+        div,
+        svg {
+            position: absolute;
+        }
+
+        /* ==========================================
+           Viewport Tracks Configuration
+           ========================================== */
+        .stage {
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .stage-top .container {
+            width: 100%;
+            height: 214px;
+            top: 7%;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .stage-bottom .container {
+            width: 100%;
+            height: 214px;
+            bottom: 5%;
+            left: 0;
+            overflow: hidden;
+        }
+
+        /* ==========================================
+           Infinite Linear Track Layout
+           ========================================== */
+        .ring {
+            display: flex !important;
+            flex-direction: row !important;
+            width: max-content !important;
+            height: 100% !important;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .img {
+            position: relative !important;
+            display: block !important;
+            left: auto !important;
+            top: auto !important;
+            margin-left: 0 !important;
+            margin-top: 0 !important;
+            transform: none !important;
+
+            width: 380px !important;
+            height: 214px !important;
+            margin-right: 45px !important;
+            flex-shrink: 0 !important;
+
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            border-radius: 12px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+
+            transition: transform 0.3s ease, opacity 0.3s ease !important;
+            pointer-events: auto;
+
+            object-fit: contain !important;
+        }
+
+        /* ==========================================
+           Centered Empower Image
+           ========================================== */
+        .centered-image {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 80%;
+            height: auto;
+            object-fit: contain;
+            z-index: 10;
+            pointer-events: auto;
+            animation: revealImage 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .centered-image:hover {
+            transform: translate(-50%, -50%) scale(1.03);
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
+        }
+
+        .centered-image:active {
+            transform: translate(-50%, -50%) scale(0.98);
+        }
+
+        @keyframes revealImage {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -40%) scale(0.8);
+                filter: blur(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+                filter: blur(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stage stage-top">
+        <div class="container">
+            <div class="ring"></div>
+        </div>
+    </div>
+
+    <img src="./src/assets/Empower.png" alt="MarSU Empower" class="centered-image">
+
+    <div class="stage stage-bottom">
+        <div class="container">
+            <div class="ring"></div>
+        </div>
+    </div>
+
+    <script>
+        /* ==========================================
+           Infinite Flat Horizontal Marquee System
+           ========================================== */
+        $(document).ready(function () {
+            const screenshotImages = [
+                '/src/assets/carousell/Screenshots_fix/Accomplishments-Rankings.png',
+                '/src/assets/carousell/Screenshots_fix/Achievements-Board_Examination_Metrics.png',
+                '/src/assets/carousell/Screenshots_fix/Budget_Util-BUR.png',
+                '/src/assets/carousell/Screenshots_fix/Dashboard.png',
+                '/src/assets/carousell/Screenshots_fix/Enrollment-Enrollment_Growth.png',
+                '/src/assets/carousell/Screenshots_fix/Enrollment-Enrollment_Trends.png',
+                '/src/assets/carousell/Screenshots_fix/High_Ed-Employability_of_Graduates.png',
+                '/src/assets/carousell/Screenshots_fix/Higher_Ed-Detailed_Status.png',
+                '/src/assets/carousell/Screenshots_fix/Higher_Ed-Institutional_Accreditation.png',
+                '/src/assets/carousell/Screenshots_fix/Login-Loading_Screen.png',
+                '/src/assets/carousell/Screenshots_fix/Login-Modal.png',
+                '/src/assets/carousell/Screenshots_fix/Research.png'
+            ];
+
+            const totalItems = screenshotImages.length;
+
+            $('.stage').each(function () {
+                const $stage = $(this);
+                const $ring = $stage.find('.ring');
+                const isTopStage = $stage.hasClass('stage-top');
+
+                $ring.empty();
+
+                for (let i = 0; i < totalItems; i++) {
+                    const $imgDiv = $('<div class="img"></div>').css('background-image', `url("${screenshotImages[i]}")`);
+                    $ring.append($imgDiv);
+                }
+
+                const $originalCards = $ring.children();
+                $ring.append($originalCards.clone());
+
+                const cardSpacingWidth = 380 + 45;
+                const totalTravelDistance = cardSpacingWidth * totalItems;
+
+                let marqueeTween;
+                const standardDuration = 82;
+
+                if (isTopStage) {
+                    gsap.set($ring, { x: -totalTravelDistance });
+                    marqueeTween = gsap.to($ring, { x: 0, duration: standardDuration, ease: 'none', repeat: -1 });
+                } else {
+                    gsap.set($ring, { x: 0 });
+                    marqueeTween = gsap.to($ring, { x: -totalTravelDistance, duration: standardDuration, ease: 'none', repeat: -1 });
+                }
+
+                setTimeout(() => {
+                    const $allImages = $ring.find('.img');
+                    $allImages.on('mouseenter', (e) => {
+                        marqueeTween.pause();
+                        let current = e.currentTarget;
+                        gsap.to($allImages, {
+                            opacity: (i, t) => (t == current) ? 1 : 0.3,
+                            scale: (i, t) => (t == current) ? 1.04 : 0.96,
+                            ease: 'power2.out',
+                            duration: 0.3
+                        });
+                    });
+
+                    $allImages.on('mouseleave', () => {
+                        marqueeTween.play();
+                        gsap.to($allImages, { opacity: 1, scale: 1, ease: 'power2.inOut', duration: 0.3 });
+                    });
+                }, 50);
+            });
+        });
+    </script>
+</body>
+
+</html>

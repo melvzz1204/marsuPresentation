@@ -10,17 +10,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 </head>
+<style>
+  .mm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>
 
 <body>
   <div id="app">
     <div class="login-card" id="loginCard">
-
       <div id="loginView">
-        <div class="brand-header">
-          <img src="/src/assets/marsuLogo.png" alt="MarSU Logo" class="brand-logo">
-          <p>Marinduque State University</p>
+        <div class="mm">
+          <div class="accent-wrapper">
+            <div>
+              <img src="./src/assets/marsuLogo.png" alt="MarSU Logo" class="brand-logo">
+            </div>
+            <img src="./src/assets/empp.png" alt="MarSU Empower Badge" class="brand-sub-accent"
+              style="width: 180px; height: 30px; object-fit: cover;">
+          </div>
         </div>
-
+        <p class="brand-title" style="margin-top: 30px; margin-bottom: 40px;">Marinduque State University</p>
         <form id="loginForm" autocomplete="off">
           <div class="form-group">
             <label for="username">Username</label>
@@ -32,7 +43,7 @@
             <input type="password" id="password" placeholder="Enter your password" required>
           </div>
 
-          <button type="submit" class="btn-login">Sign In</button>
+          <button type="submit" class="btn-login" style="background-color: #660033; color: white;">Sign In</button>
         </form>
       </div>
 
@@ -46,10 +57,8 @@
       </div>
 
       <div id="feedbackMessage" class="message"></div>
-
-      <div class="card-footer">
-        <span>Build a brighter future with MarSU</span>
-      </div>
+      <p style="font-size: 12px;"><i>Empowering Minds, Transforming Lives, and Advancing Opportunities with a Heart</i>
+      </p>
 
     </div>
   </div>

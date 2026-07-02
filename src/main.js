@@ -1,3 +1,3 @@
 import "./style.css";
-import "./js/home";
+import "./js/home.js";
 import "./home.css";
