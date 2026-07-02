@@ -10,14 +10,17 @@ const teamMembers = [
     name: "Global Recognition Matrix",
     role: " Sustainability & Innovation Rankings",
   }, // 4.png
-  { name: "Multi-Year Enrollment", role: "System Registration Trace" }, // 5.png
-  { name: "Campus Enrollment Trends", role: "Registrar Program Demographics" }, // 6.png
+  { name: "Campus Enrollment Trends", role: "Registrar Program Demographics" }, // 5.png
+  { name: "Multi-Year Enrollment", role: "System Registration Trace" }, // 6.png
   { name: "Employability of Graduates", role: "Tracer Study Matrix" }, // 7.png
-  { name: "Detailed Program Registry", role: "Accreditation Status List" }, // 8.png
-  { name: "Institutional Accreditation", role: "Academic Programs Overview" }, // 9.png
-  { name: "System Initialization", role: "Access Verification Loading" }, // 10.png
+  {
+    name: "  Academic Programs Overview",
+    role: "  Institutional Accreditation",
+  }, // 8.png
+  { name: "Detailed Program Registry", role: "Accreditation Status List" }, // 9.png
+  { name: "Performance Summary", role: "Annual Review Report" }, // 10.png
   { name: "Operations Framework", role: "Strategic Implementation" }, // 11.png (Placeholder)
-  { name: "Performance Summary", role: "Annual Review Report" }, // 12.png (Placeholder)
+  { name: "System Initialization", role: "Access Verification Loading" }, // 12.png (Placeholder)
 ];
 
 const cards = document.querySelectorAll(".card");
