@@ -1,5 +1,17 @@
 import { defineConfig } from "vite";
+import { resolve } from "path";
 
 export default defineConfig({
-  base: "./", // Helps resolve paths like ./src/assets cleanly
+  base: "./",
+  build: {
+    rollupOptions: {
+      input: {
+        // Tell Vite about every single HTML page you have
+        main: resolve(__dirname, "index.html"),
+        sample: resolve(__dirname, "sample.html"),
+        home: resolve(__dirname, "home.html"),
+        loadingempower: resolve(__dirname, "loadingempower.html"),
+      },
+    },
+  },
 });
