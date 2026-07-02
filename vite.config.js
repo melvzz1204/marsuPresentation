@@ -9,6 +9,7 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
         sample: resolve(__dirname, "sample.html"),
         home: resolve(__dirname, "home.html"),
+        loadingempower: resolve(__dirname, "loadingempower.html"),
       },
     },
   },
