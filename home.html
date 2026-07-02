@@ -23,7 +23,8 @@
     </div>
 
     <div class="project-title-container">
-        <h2 style="color: #FFD700">Presidential Dashboard for Organizational Data and Insights</h2>
+
+        <h1>Presidential Dashboard for Organizational Data and Insights</h1>
     </div>
 
     <div class="transition-curtain"></div>
@@ -47,7 +48,7 @@
             font-family: "Montserrat", sans-serif;
         }
 
-        /* --- STAGE 1: BRAND CONTAINER (0.0s - 2.5s) --- */
+        /* --- STAGE 1: BRAND CONTAINER (0s - 7s) --- */
         .brand-container {
             position: absolute;
             display: flex;
@@ -60,9 +61,8 @@
             padding: 20px;
             opacity: 0;
             transform: translateY(15px);
-            animation: showcaseBrand 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            animation: showcaseBrand 7.0s cubic-bezier(0.25, 1, 0.5, 1) forwards;
             animation-delay: 0s;
-            /* Fires instantly on load */
         }
 
         .logo {
@@ -93,16 +93,18 @@
                 transform: translateY(15px);
             }
 
-            15% {
+            8% {
                 opacity: 1;
                 transform: translateY(0);
             }
 
-            85% {
+            /* Fades in quickly */
+            92% {
                 opacity: 1;
                 transform: translateY(0);
             }
 
+            /* Remains solid for ~6 seconds */
             100% {
                 opacity: 0;
                 transform: translateY(-15px);
@@ -110,13 +112,13 @@
             }
         }
 
-        /* --- STAGE 2: SEPARATED LOADING ELEMENT (2.5s - 4.5s) --- */
+        /* --- STAGE 2: SEPARATED LOADING ELEMENT (7s - 14s) --- */
         .loading-wrapper {
             position: absolute;
             opacity: 0;
-            animation: showcaseLoader 2.0s ease-in-out forwards;
-            animation-delay: 2.5s;
-            /* Adjusted timeline */
+            animation: showcaseLoader 7.0s ease-in-out forwards;
+            animation-delay: 7.0s;
+            /* Starts exactly when Stage 1 finishes */
         }
 
         .loading-text {
@@ -151,12 +153,12 @@
                 transform: scale(0.95);
             }
 
-            15% {
+            8% {
                 opacity: 1;
                 transform: scale(1);
             }
 
-            80% {
+            92% {
                 opacity: 1;
                 transform: scale(1);
             }
@@ -186,7 +188,7 @@
             }
         }
 
-        /* --- STAGE 3: CINEMATIC PROJECT TITLE (4.5s - 7.3s) --- */
+        /* --- STAGE 3: CINEMATIC PROJECT TITLE (14s - 21s) --- */
         .project-title-container {
             position: absolute;
             display: flex;
@@ -199,9 +201,9 @@
             padding: 20px;
             opacity: 0;
             transform: scale(0.98);
-            animation: showcaseProject 4.0s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-            animation-delay: 4.5s;
-            /* Adjusted timeline */
+            animation: showcaseProject 7.0s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            animation-delay: 14.0s;
+            /* Starts exactly when Stage 2 finishes */
         }
 
         .project-title-container h1 {
@@ -233,12 +235,12 @@
                 transform: scale(0.96);
             }
 
-            20% {
+            8% {
                 opacity: 1;
                 transform: scale(1);
             }
 
-            85% {
+            92% {
                 opacity: 1;
                 transform: scale(1);
             }
@@ -250,7 +252,7 @@
             }
         }
 
-        /* --- STAGE 4: ISOLATED EXIT CURTAIN (7.3s - 7.9s) --- */
+        /* --- STAGE 4: ISOLATED EXIT CURTAIN (21s - 21.6s) --- */
         .transition-curtain {
             position: fixed;
             top: 0;
@@ -262,8 +264,8 @@
             opacity: 0;
             pointer-events: none;
             animation: dropCurtain 0.6s ease-in-out forwards;
-            animation-delay: 7.3s;
-            /* Adjusted timeline */
+            animation-delay: 21.0s;
+            /* Drops instantly when Stage 3 fades out */
         }
 
         @keyframes dropCurtain {
@@ -300,10 +302,10 @@
     </style>
 
     <script>
-        // Total animation timeline now wraps cleanly at exactly 7.9 seconds
+        // Timeout set to 21600ms (21.6 seconds) to give the black curtain time to close completely
         setTimeout(() => {
             window.location.href = "sample.html";
-        }, 7900);
+        }, 21600);
     </script>
 </body>
 
