@@ -1,41 +1,32 @@
 // Expanded to 12 members to match your 12 images!
 const teamMembers = [
-  {
-    name: "Presidential Dashboard",
-    role: "Organizational Data Overview",
-  }, // 1.png
-  { name: "Board Examination Metrics", role: "Passing Efficiency Analysis" }, // 2.png
-  { name: "Budget Utilization Rate", role: "Fiscal Accountability Matrix" }, // 3.png
+  { name: "Presidential Dashboard", role: "Organizational Data Overview" },
+  { name: "Board Examination Metrics", role: "Passing Efficiency Analysis" },
+  { name: "Budget Utilization Rate", role: "Fiscal Accountability Matrix" },
   {
     name: "Global Recognition Matrix",
-    role: " Sustainability & Innovation Rankings",
-  }, // 4.png
-  { name: "Campus Enrollment Trends", role: "Registrar Program Demographics" }, // 5.png
-  { name: "Multi-Year Enrollment", role: "System Registration Trace" }, // 6.png
-  { name: "Employability of Graduates", role: "Tracer Study Matrix" }, // 7.png
-  {
-    name: "  Academic Programs Overview",
-    role: "  Institutional Accreditation",
-  }, // 8.png
-  { name: "Detailed Program Registry", role: "Accreditation Status List" }, // 9.png
-  { name: "Performance Summary", role: "Annual Review Report" }, // 10.png
-  { name: "Operations Framework", role: "Strategic Implementation" }, // 11.png (Placeholder)
-  { name: "System Initialization", role: "Access Verification Loading" }, // 12.png (Placeholder)
+    role: "Sustainability & Innovation Rankings",
+  },
+  { name: "Campus Enrollment Trends", role: "Registrar Program Demographics" },
+  { name: "Multi-Year Enrollment", role: "System Registration Trace" },
+  { name: "Employability of Graduates", role: "Tracer Study Matrix" },
+  { name: "Academic Programs Overview", role: "Institutional Accreditation" },
+  { name: "Detailed Program Registry", role: "Accreditation Status List" },
+  { name: "Performance Summary", role: "Annual Review Report" },
+  { name: "Operations Framework", role: "Strategic Implementation" },
+  { name: "System Initialization", role: "Access Verification Loading" },
 ];
 
 const cards = document.querySelectorAll(".card");
 const dots = document.querySelectorAll(".dot");
 const memberName = document.querySelector(".member-name");
 const memberRole = document.querySelector(".member-role");
-const upArrows = document.querySelectorAll(".nav-arrow.up");
-const downArrows = document.querySelectorAll(".nav-arrow.down");
 
 let currentIndex = 0;
 let isAnimating = false;
 let autoSlideInterval;
-let isMouseOverCard = false; // Changed tracker strictly for image card hover presence
+let isMouseOverCard = false;
 
-// Reduced from 800ms to 400ms to allow much faster user clicking without getting "stuck"
 const ANIMATION_LOCK_DURATION = 400;
 
 function updateCarousel(newIndex, isFirstLoad = false) {
@@ -43,7 +34,6 @@ function updateCarousel(newIndex, isFirstLoad = false) {
 
   const targetIndex = (newIndex + cards.length) % cards.length;
 
-  // Prevent running the animation if the user clicks the dot of the slide they are already on
   if (!isFirstLoad && targetIndex === currentIndex) return;
 
   isAnimating = true;
@@ -52,25 +42,27 @@ function updateCarousel(newIndex, isFirstLoad = false) {
   cards.forEach((card, i) => {
     const offset = (i - currentIndex + cards.length) % cards.length;
 
+    // Clean out all positional classes
     card.classList.remove(
       "center",
-      "up-1",
-      "up-2",
-      "down-1",
-      "down-2",
+      "left-1",
+      "left-2",
+      "right-1",
+      "right-2",
       "hidden",
     );
 
+    // Map positional offsets horizontally instead of vertically
     if (offset === 0) {
       card.classList.add("center");
     } else if (offset === 1) {
-      card.classList.add("down-1");
+      card.classList.add("right-1"); // Next card on the right
     } else if (offset === 2) {
-      card.classList.add("down-2");
+      card.classList.add("right-2"); // Far right card
     } else if (offset === cards.length - 1) {
-      card.classList.add("up-1");
+      card.classList.add("left-1"); // Previous card on the left
     } else if (offset === cards.length - 2) {
-      card.classList.add("up-2");
+      card.classList.add("left-2"); // Far left card
     } else {
       card.classList.add("hidden");
     }
@@ -83,7 +75,6 @@ function updateCarousel(newIndex, isFirstLoad = false) {
   memberName.style.opacity = "0";
   memberRole.style.opacity = "0";
 
-  // Faster text transition
   setTimeout(() => {
     const member = teamMembers[currentIndex] || {
       name: `Dashboard ${currentIndex + 1}`,
@@ -95,7 +86,6 @@ function updateCarousel(newIndex, isFirstLoad = false) {
     memberRole.style.opacity = "1";
   }, 200);
 
-  // Unlock the carousel faster so it feels highly responsive to user clicks
   setTimeout(() => {
     isAnimating = false;
   }, ANIMATION_LOCK_DURATION);
@@ -104,11 +94,10 @@ function updateCarousel(newIndex, isFirstLoad = false) {
 // --- Auto-Slide Logic ---
 function startAutoSlide() {
   stopAutoSlide();
-  // Only execute cycle if the mouse pointer is NOT hovering over an image card
   if (!isMouseOverCard) {
     autoSlideInterval = setInterval(() => {
       updateCarousel(currentIndex + 1);
-    }, 3500); // Gives slightly more reading time (3.5s) per slide
+    }, 3500);
   }
 }
 
@@ -118,71 +107,54 @@ function stopAutoSlide() {
   }
 }
 
-// Intercepts deliberate human navigation actions
 function handleUserAction(actionFunction) {
   stopAutoSlide();
   actionFunction();
-  // Respects card hover state; will not kick-start a loop if the cursor is remaining on the image
   startAutoSlide();
 }
 
 // --- Event Listeners ---
-upArrows.forEach((arrow) => {
-  arrow.addEventListener("click", () => {
-    handleUserAction(() => updateCarousel(currentIndex - 1));
-  });
-});
-
-downArrows.forEach((arrow) => {
-  arrow.addEventListener("click", () => {
-    handleUserAction(() => updateCarousel(currentIndex + 1));
-  });
-});
-
 dots.forEach((dot, i) => {
   dot.addEventListener("click", () => {
     handleUserAction(() => updateCarousel(i));
   });
 });
 
-/* --- UPDATED: Combined Card Click & Hover Listeners --- */
 cards.forEach((card, i) => {
-  // Navigation on click
   card.addEventListener("click", () => {
     handleUserAction(() => updateCarousel(i));
   });
 
-  // Pauses carousel only when mouse is explicitly on top of this image card
   card.addEventListener("mouseenter", () => {
     isMouseOverCard = true;
     stopAutoSlide();
   });
 
-  // Resumes carousel cycle as soon as mouse moves off this image card
   card.addEventListener("mouseleave", () => {
     isMouseOverCard = false;
     startAutoSlide();
   });
 });
 
+// Changed from Up/Down arrows to Left/Right arrows
 document.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowUp") {
+  if (e.key === "ArrowLeft") {
     handleUserAction(() => updateCarousel(currentIndex - 1));
-  } else if (e.key === "ArrowDown") {
+  } else if (e.key === "ArrowRight") {
     handleUserAction(() => updateCarousel(currentIndex + 1));
   }
 });
 
-// --- Touch Swipe Support ---
+// --- Touch Swipe Support (Updated to Horizontal screenX) ---
 let touchStartX = 0;
 let touchEndX = 0;
 
 document.addEventListener("touchstart", (e) => {
-  touchStartX = e.changedTouches[0].screenY;
+  touchStartX = e.changedTouches[0].screenX; // Track horizontal touch position
 });
 
 document.addEventListener("touchend", (e) => {
-  touchEndX = e.changedTouches[0].screenY;
+  touchEndX = e.changedTouches[0].screenX;
   handleUserAction(handleSwipe);
 });
 
@@ -192,15 +164,13 @@ function handleSwipe() {
 
   if (Math.abs(diff) > swipeThreshold) {
     if (diff > 0) {
-      updateCarousel(currentIndex + 1);
+      updateCarousel(currentIndex + 1); // Swiped left, go to next card
     } else {
-      updateCarousel(currentIndex - 1);
+      updateCarousel(currentIndex - 1); // Swiped right, go to previous card
     }
   }
 }
 
 // --- Launch Initialization ---
-
-// Passing 'true' prevents the animation lock from firing on the very first page load
 updateCarousel(0, true);
 startAutoSlide();
