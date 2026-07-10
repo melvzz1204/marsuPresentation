@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Education - Graduate Accreditation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght=600;700&family=Montserrat:wght=300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --burgundy-deep: #4A0E17;
+            --burgundy-light: #2A080C;
+            --gold-primary: #D4AF37;
+            --gold-light: #F3E5AB;
+            --text-white: #FAFAFA;
+            --text-dim: rgba(250, 250, 250, 0.7);
+            --warning-coral: #FF5252;
+            --card-bg: rgba(0, 0, 0, 0.25);
+            --border-spec: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle, var(--burgundy-deep) 0%, var(--burgundy-light) 100%);
+            color: var(--text-white);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        /* --- CONTENT PLATFORM TEMPLATE (HEADER OMITTED) --- */
+        .content {
+            max-width: 1200px;
+            width: 92%;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+
+            /* Aligns layout beautifully near the top */
+            margin-bottom: 60px;
+            /* Layout boundary margin for system navigation */
+        }
+
+        .page-header {
+            text-align: left;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--gold-primary);
+            padding-left: 15px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-dim);
+            margin: 5px 0 0 0;
+            font-weight: 400;
+        }
+
+        /* --- DISPLAY GRID SYSTEM --- */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 25px;
+            align-items: stretch;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: var(--border-spec);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* --- CHART RING BLOCK --- */
+        .gauge-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .gauge-container {
+            position: relative;
+            width: 240px;
+            height: 240px;
+        }
+
+        .gauge-center-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+
+        .gauge-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-white);
+        }
+
+        .gauge-label {
+            font-size: 0.8rem;
+            color: var(--warning-coral);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* --- EXECUTIVE DATA MATRIX BLOCK --- */
+        .data-tables-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .summary-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .summary-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border-left: 3px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .summary-list li.highlight-row {
+            border-left-color: var(--gold-primary);
+            background: rgba(212, 175, 55, 0.06);
+        }
+
+        .item-label {
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+
+        .item-val {
+            font-weight: 700;
+            color: var(--text-white);
+        }
+
+        .variance-banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            background: rgba(255, 82, 82, 0.08);
+            border: 1px solid rgba(255, 82, 82, 0.2);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            width: 85%;
+            box-sizing: border-box;
+        }
+
+        .note-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            font-style: italic;
+            line-height: 1.45;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav-placeholder"></div>
+
+    <div class="content">
+        <div class="page-header">
+            <h1>Advanced Education Program</h1>
+            <div class="subtitle">Accreditation of Graduate Programs</div>
+        </div>
+
+        <div class="dashboard-grid">
+
+            <div class="card gauge-section">
+                <div class="gauge-container">
+                    <canvas id="gradAccreditationChart"></canvas>
+                    <div class="gauge-center-text">
+                        <div class="gauge-value">75%</div>
+                        <div class="gauge-label">Actual Progress</div>
+                    </div>
+                </div>
+                <div class="variance-banner">
+                    <span style="color: var(--text-dim); font-weight: 500;">Target: 100%</span>
+                    <span style="color: var(--warning-coral); font-weight: 700;">-25% Variance</span>
+                </div>
+            </div>
+
+            <div class="data-tables-container">
+                <div class="card" style="padding: 20px;">
+                    <ul class="summary-list">
+                        <li>
+                            <span class="item-label">Level 3 Accreditation</span>
+                            <span class="item-val">3</span>
+                        </li>
+                        <li>
+                            <span class="item-label">Level 2 Accreditation</span>
+                            <span class="item-val">0</span>
+                        </li>
+                        <li>
+                            <span class="item-label">Level 1 Accreditation</span>
+                            <span class="item-val">0</span>
+                        </li>
+                        <li class="highlight-row">
+                            <span class="item-label" style="color: var(--gold-light);">Total Accredited Programs</span>
+                            <span class="item-val" style="color: var(--gold-primary);">3</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="note-card">
+                    Note: 3 out of 4 undergraduate programs are duly accredited by AACCUP. The Master in Information
+                    Technology (MIT) program is scheduled to undergo Level I accreditation 2028, following the
+                    completion of its first batch of graduates AY 2026-2027.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        const ctx = document.getElementById('gradAccreditationChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [75, 25],
+                    backgroundColor: [
+                        '#D4AF37', // Gold tracing the completed percentage metric
+                        'rgba(255, 82, 82, 0.15)' // Faded coral alert indicator framing the remaining balance
+                    ],
+                    borderWidth: 0,
+                    borderRadius: 4,
+                    cutout: '82%'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                }
+            }
+        });
+    </script>
+    <script src="comp.js"></script>
+</body>
+
+</html>

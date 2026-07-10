@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Program - Completed & Presented</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght=600;700&family=Montserrat:wght=300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --burgundy-deep: #4A0E17;
+            --burgundy-light: #2A080C;
+            --gold-primary: #D4AF37;
+            --gold-light: #F3E5AB;
+            --text-white: #FAFAFA;
+            --text-dim: rgba(250, 250, 250, 0.7);
+            --warning-coral: #FF5252;
+            --card-bg: rgba(0, 0, 0, 0.25);
+            --border-spec: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle, var(--burgundy-deep) 0%, var(--burgundy-light) 100%);
+            color: var(--text-white);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        /* --- CONTENT PLATFORM TEMPLATE (HEADER CONTAINER OMITTED) --- */
+        .content {
+            max-width: 1200px;
+            width: 92%;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+
+            /* Positions the dashboard tightly near the top */
+            margin-bottom: 60px;
+            /* Functional buffer gap for footer controls */
+        }
+
+        .page-header {
+            text-align: left;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--gold-primary);
+            padding-left: 15px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-dim);
+            margin: 5px 0 0 0;
+            font-weight: 400;
+        }
+
+        /* --- SYMMETRIC DUAL-GAUGE GRID --- */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            align-items: stretch;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: var(--border-spec);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            min-height: 310px;
+        }
+
+        .metric-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            height: 40px;
+            /* Keeps label alignment uniform across rows */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- CHART CORE PLATES --- */
+        .gauge-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: auto;
+        }
+
+        .gauge-center-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+
+        .gauge-value {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-white);
+            line-height: 1;
+        }
+
+        .gauge-subtext {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        /* --- VARIANCE STATUS FOOTERS --- */
+        .status-footer-plate {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            padding: 8px 16px;
+            border-radius: 6px;
+            width: 85%;
+            box-sizing: border-box;
+        }
+
+        .status-footer-plate.warning {
+            background: rgba(255, 82, 82, 0.08);
+            border: 1px solid rgba(255, 82, 82, 0.2);
+            color: var(--warning-coral);
+        }
+
+        .status-footer-plate.success {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--gold-primary);
+        }
+
+        .note-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            font-style: italic;
+            line-height: 1.45;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav-placeholder"></div>
+
+    <div class="content">
+        <div class="page-header">
+            <h1>Research Program</h1>
+            <div class="subtitle">Research Completed and Presented</div>
+        </div>
+
+        <div class="dashboard-grid">
+
+            <div class="card">
+                <div class="metric-title">Number of Research Outputs Completed Within the Year</div>
+                <div class="gauge-container">
+                    <canvas id="completedChart"></canvas>
+                    <div class="gauge-center-text">
+                        <div class="gauge-value">17</div>
+                        <div class="gauge-subtext">Outputs</div>
+                    </div>
+                </div>
+                <div class="status-footer-plate warning">
+                    <span style="color: var(--text-dim);">Target: 30</span> | <strong>-13 Variance</strong>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="metric-title">Percentage of Research Outputs Presented in Forums</div>
+                <div class="gauge-container">
+                    <canvas id="presentedChart"></canvas>
+                    <div class="gauge-center-text">
+                        <div class="gauge-value" style="color: var(--gold-primary);">100%</div>
+                        <div class="gauge-subtext">Presented</div>
+                    </div>
+                </div>
+                <div class="status-footer-plate success">
+                    <span style="color: var(--text-dim);">Target: 100%</span> | <strong>0% Variance</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="note-card">
+            Note: 17 research outputs were successfully completed in Q1 to Q2 of CY 2026, and 100% of these research
+            outputs were presented in national, regional, and international fora.
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Chart 1: Outputs Volume Ring Configuration
+        const ctxComp = document.getElementById('completedChart').getContext('2d');
+        new Chart(ctxComp, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [17, 13],
+                    backgroundColor: [
+                        '#D4AF37', // Gold progress visualization tracking outputs completed
+                        'rgba(255, 82, 82, 0.15)' // Coral buffer alerting on remaining balance tracking target volume
+                    ],
+                    borderWidth: 0,
+                    borderRadius: 4,
+                    cutout: '82%'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                }
+            }
+        });
+
+        // Chart 2: Presentation Efficiency Ratio Configuration
+        const ctxPres = document.getElementById('presentedChart').getContext('2d');
+        new Chart(ctxPres, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [100],
+                    backgroundColor: ['#D4AF37'],
+                    borderWidth: 0,
+                    cutout: '82%'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                }
+            }
+        });
+    </script>
+    <script src="comp.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher Education Program - Enrollment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght=600;700&family=Montserrat:wght=300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --burgundy-deep: #4A0E17;
+            --burgundy-light: #2A080C;
+            --gold-primary: #D4AF37;
+            --gold-light: #F3E5AB;
+            --text-white: #FAFAFA;
+            --text-dim: rgba(250, 250, 250, 0.7);
+            --success-green: #00E676;
+            --card-bg: rgba(0, 0, 0, 0.25);
+            --border-spec: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle, var(--burgundy-deep) 0%, var(--burgundy-light) 100%);
+            color: var(--text-white);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        /* --- CONTENT PLATFORM TEMPLATE --- */
+        .content {
+            max-width: 1100px;
+            width: 90%;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+
+            /* Reduced from 90px to occupy the top space naturally */
+            margin-bottom: 60px;
+            /* Clears footer placeholder */
+        }
+
+        .page-header {
+            text-align: left;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--gold-primary);
+            padding-left: 15px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-dim);
+            margin: 5px 0 0 0;
+            font-weight: 400;
+        }
+
+        /* --- DISPLAY GRID SYSTEM --- */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: var(--border-spec);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- VISUAL CHART GAUGE BLOCK --- */
+        .gauge-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gauge-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: auto;
+        }
+
+        .gauge-center-text {
+            position: absolute;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+
+        .gauge-value {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-white);
+            line-height: 1;
+        }
+
+        .gauge-label {
+            font-size: 0.8rem;
+            color: var(--success-green);
+            font-weight: 600;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- STATISTICAL REPORT CARD --- */
+        .metrics-display {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border-left: 3px solid transparent;
+        }
+
+        .metric-row.target {
+            border-left-color: var(--gold-primary);
+        }
+
+        .metric-row.actual {
+            border-left-color: var(--success-green);
+        }
+
+        .metric-row.variance {
+            border-left-color: var(--text-dim);
+        }
+
+        .meta-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+
+        .meta-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .meta-value.target-color {
+            color: var(--gold-light);
+        }
+
+        .meta-value.actual-color {
+            color: var(--success-green);
+        }
+
+        .meta-value.variance-color {
+            color: var(--text-dim);
+            font-weight: 400;
+        }
+
+        .note-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 15px 20px;
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            font-style: italic;
+            line-height: 1.5;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav-placeholder"></div>
+
+    <div class="content">
+        <div class="page-header">
+            <h1>Higher Education Program</h1>
+            <div class="subtitle">Enrollment in Priority Programs</div>
+        </div>
+
+        <div class="dashboard-grid">
+
+            <div class="card gauge-section">
+                <div class="gauge-container">
+                    <canvas id="enrollmentChart"></canvas>
+                    <div class="gauge-center-text">
+                        <div class="gauge-value">100%</div>
+                        <div class="gauge-label">Target Achieved</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metrics-display">
+                <div class="card" style="gap: 15px; padding: 20px;">
+                    <div class="metric-row target">
+                        <span class="meta-label">Q1-Q2 Target</span>
+                        <span class="meta-value target-color">100%</span>
+                    </div>
+                    <div class="metric-row actual">
+                        <span class="meta-label">Q1-Q2 Actual</span>
+                        <span class="meta-value actual-color">100%</span>
+                    </div>
+                    <div class="metric-row variance">
+                        <span class="meta-label">Variance Performance</span>
+                        <span class="meta-value variance-color">0% (Fully Met)</span>
+                    </div>
+                </div>
+
+                <div class="note-card">
+                    Note: 100% of enrollment in the undergraduate programs of the university are enrolled in
+                    CHED-Identified and RDC-Identified Priority Programs.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        const ctx = document.getElementById('enrollmentChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [100, 0],
+                    backgroundColor: [
+                        '#00E676', // Vivid emerald green showing absolute metric fulfillment
+                        'rgba(255, 255, 255, 0.05)'
+                    ],
+                    borderWidth: 0,
+                    borderRadius: 4,
+                    cutout: '84%',
+                    rotation: -120,
+                    circumference: 240
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                }
+            }
+        });
+    </script>
+    <script src="comp.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarSU Accomplishments - THE Sustainability Impact Ratings 2026</title>
+    <!-- Premium Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght=600;700&family=Montserrat:wght=300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --burgundy-deep: #4A0E17;
+            --burgundy-light: #2A080C;
+            --gold-primary: #D4AF37;
+            --text-white: #FAFAFA;
+            --text-dim: rgba(250, 250, 250, 0.7);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle, var(--burgundy-deep) 0%, var(--burgundy-light) 100%);
+            color: var(--text-white);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        /* --- CONTENT PLATFORM TEMPLATE (HEADER OMITTED) --- */
+        .content {
+            max-width: 1350px;
+            width: 92%;
+            margin: auto;
+            padding: 10px;
+            display: flex;
+            flex-grow: 1;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 60px;
+            /* Layout safety padding buffer for navigation bar */
+        }
+
+        /* --- EDITORIAL ARTICLE SPLIT LAYOUT --- */
+        .split-container {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 45px;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* --- TYPOGRAPHIC EDITORIAL PANEL (LEFT SIDE) --- */
+        .editorial-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 10px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.15rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin: 0 0 25px 0;
+            line-height: 1.25;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .article-body {
+            font-size: 0.9rem;
+            line-height: 1.75;
+            color: var(--text-dim);
+            font-weight: 400;
+            margin: 0;
+            text-align: justify;
+            letter-spacing: 0.2px;
+        }
+
+        /* --- PHOTOGRAPHIC DISPLAY CONTAINER PANEL (RIGHT SIDE) --- */
+        .photo-frame {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            width: 100%;
+            max-height: 65vh;
+            display: flex;
+            justify-content: center;
+            background: transparent;
+        }
+
+        .photo-frame img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 65vh;
+            object-fit: contain;
+            border-radius: 8px;
+            display: block;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Semi-transparent Vignette Caption Layer overlay positioned within image bounds */
+        .photo-caption-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            background: linear-gradient(to top, rgba(42, 8, 12, 0.95) 0%, rgba(74, 14, 23, 0.7) 60%, transparent 100%);
+            padding: 25px 30px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .overlay-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-white);
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+
+        .overlay-date {
+            font-size: 0.75rem;
+            color: var(--gold-primary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Global Navigation Injected Component -->
+    <div id="nav-placeholder"></div>
+
+    <div class="content">
+        <div class="split-container">
+
+            <!-- Left Side Column: Typographic Summary Details -->
+            <div class="editorial-panel">
+                <h1>MarSU earns global recognition in the THE Sustainability Impact Ratings 2026</h1>
+                <p class="article-body">
+                    Marinduque State University (MarSU) proudly announces its inclusion in the Times Higher Education
+                    (THE) Sustainability Impact Ratings 2026, securing a place in the 1501+ bracket among 1,603
+                    institutions worldwide.
+                </p>
+            </div>
+
+            <!-- Right Side Column: Photographic Feature Plate -->
+            <div class="photo-frame">
+                <img src="../assets/accom14.png.jpg"
+                    alt="MarSU THE Sustainability Impact Ratings 2026 Infographic showing Rank 1501+ in the world">
+                <div class="photo-caption-overlay">
+                    <div class="overlay-title">Times Higher Education (THE) Sustainability Impact Ratings</div>
+                    <div class="overlay-date">2026 Edition</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="comp.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The President's Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --burgundy-deep: #4A0E17;
+            --burgundy-light: #2A080C;
+            --gold-primary: #D4AF37;
+            --gold-light: #F3E5AB;
+            --text-white: #FAFAFA;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle, var(--burgundy-deep) 0%, var(--burgundy-light) 100%);
+            color: var(--text-white);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            /* Maintains strict presentation slide scaling */
+        }
+
+        /* --- CENTER CONTENT AREA --- */
+        .content {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .header-group {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header-group::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            margin: 20px auto 0 auto;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            letter-spacing: 2px;
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-group span {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: block;
+        }
+
+        .program-container {
+            width: 100%;
+            max-width: 650px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 25px 40px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .program-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .program-list li {
+            font-size: 1.15rem;
+            font-weight: 500;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s ease;
+        }
+
+        .program-list li:last-child {
+            border-bottom: none;
+
+        }
+
+        .program-list li::before {
+            content: "✦";
+            color: var(--gold-primary);
+            margin-right: 15px;
+            font-size: 0.9rem;
+        }
+
+        .program-list li:hover {
+            transform: translateX(5px);
+            color: var(--gold-light);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav-placeholder"></div>
+
+    <div class="content">
+        <div class="header-group">
+            <h1>The President’s Report</h1>
+            <span>For the interim period ended June 30, 2026</span>
+        </div>
+
+        <div class="program-container">
+            <ul class="program-list">
+                <li>Higher Education Program</li>
+                <li>Advanced Education Program</li>
+                <li>Research Program</li>
+                <li>Technical Advisory Extension Program</li>
+                <li>Key Accomplishments</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="comp.js"></script>
+</body>
+
+</html>

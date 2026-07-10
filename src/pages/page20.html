@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarSU Accomplishments - Strategic Workshop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght=600;700&family=Montserrat:wght=300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --burgundy-deep: #4A0E17;
+            --burgundy-light: #2A080C;
+            --gold-primary: #D4AF37;
+            --text-white: #FAFAFA;
+            --text-dim: rgba(250, 250, 250, 0.7);
+            --card-bg: rgba(0, 0, 0, 0.2);
+            --border-spec: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle, var(--burgundy-deep) 0%, var(--burgundy-light) 100%);
+            color: var(--text-white);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        /* --- CONTENT PLATFORM TEMPLATE (HEADER OMITTED) --- */
+        .content {
+            max-width: 1350px;
+            width: 92%;
+            margin: auto;
+            padding: 10px;
+            display: flex;
+            flex-grow: 1;
+            align-items: center;
+            justify-content: center;
+
+            /* Snaps content elements closer to the top border */
+            margin-bottom: 50px;
+            /* Layout safety padding buffer for navigation bar */
+        }
+
+        /* --- EDITORIAL ARTICLE SPLIT LAYOUT --- */
+        .split-container {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 45px;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* --- PHOTOGRAPHIC DISPLAY CONTAINER PANEL --- */
+        .photo-frame {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: var(--border-spec);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+            background: rgba(0, 0, 0, 0.4);
+            aspect-ratio: 4 / 3;
+            display: flex;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Semi-transparent Vignette Caption Layer overlay */
+        .photo-caption-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(42, 8, 12, 0.95) 0%, rgba(74, 14, 23, 0.7) 40%, transparent 100%);
+            padding: 25px 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .overlay-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-white);
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+
+        .overlay-date {
+            font-size: 0.75rem;
+            color: var(--gold-primary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- TYPOGRAPHIC EDITORIAL PANEL --- */
+        .editorial-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-right: 20px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.15rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin: 0 0 25px 0;
+            line-height: 1.25;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .article-body {
+            font-size: 0.9rem;
+            line-height: 1.75;
+            color: var(--text-dim);
+            font-weight: 400;
+            margin: 0;
+            text-align: justify;
+            letter-spacing: 0.2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav-placeholder"></div>
+
+    <div class="content">
+        <div class="split-container">
+
+            <div class="photo-frame">
+                <img src="../assets/accom1.png" alt="MarSU Strategic Organizational Engineering Workshop Group">
+                <div class="photo-caption-overlay">
+                    <div class="overlay-title">Strategic Organizational Engineering Workshop Ends with Recognition and
+                        Vision for MarSU's Future</div>
+                    <div class="overlay-date">January 14, 2026</div>
+                </div>
+            </div>
+
+            <div class="editorial-panel">
+                <h1>MarSU Charts Future with Strategic Organizational Engineering Workshop</h1>
+                <p class="article-body">
+                    Marinduque State University, through the initiative of its Planning and Development Unit and under
+                    the leadership of Prof. Diosdado P. Zulueta, held the Strategic Organizational Engineering &
+                    Performance Alignment Workshop from January 12-14, 2026, at the University Lounge, Admin Building.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="comp.js"></script>
+</body>
+
+</html>

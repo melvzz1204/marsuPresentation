@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Performance - Key Accomplishments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght=600;700&family=Montserrat:wght=300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --burgundy-deep: #4A0E17;
+            --burgundy-light: #2A080C;
+            --gold-primary: #D4AF37;
+            --gold-light: #F3E5AB;
+            --text-white: #FAFAFA;
+            --text-dim: rgba(250, 250, 250, 0.65);
+            --card-bg: rgba(0, 0, 0, 0.2);
+            --card-hover-bg: rgba(212, 175, 55, 0.05);
+            --border-spec: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle, var(--burgundy-deep) 0%, var(--burgundy-light) 100%);
+            color: var(--text-white);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        /* --- CONTENT PLATFORM TEMPLATE (HEADER OMITTED) --- */
+        .content {
+            max-width: 1000px;
+            width: 88%;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+
+            /* Snaps title tightly below upper boundary viewport */
+            margin-bottom: 55px;
+            /* Standard navigation footer baseline gap */
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .page-header::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            margin: 15px auto 0 auto;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-dim);
+            margin: 8px 0 0 0;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- STACKED HUB INDEX CARD LAYOUT --- */
+        .hub-container {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            max-width: 700px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hub-card {
+            background: var(--card-bg);
+            border: var(--border-spec);
+            border-radius: 10px;
+            padding: 20px 28px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            color: var(--text-white);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hub-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--gold-primary);
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        /* Micro-Animation Presentation Adjustments */
+        .hub-card:hover {
+            transform: translateY(-2px);
+            background: var(--card-hover-bg);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .hub-card:hover::before {
+            width: 6px;
+            opacity: 1;
+        }
+
+        .hub-icon {
+            font-size: 1.05rem;
+            color: var(--gold-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+        }
+
+        .hub-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav-placeholder"></div>
+
+    <div class="content">
+        <div class="page-header">
+            <h1>Key Accomplishments</h1>
+            <div class="subtitle">For the interim period ended June 30, 2026</div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="comp.js"></script>
+</body>
+
+</html>

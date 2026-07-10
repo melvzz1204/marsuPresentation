@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher Education Program - Undergraduate Enrollment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --burgundy-deep: #4A0E17;
+            --burgundy-light: #2A080C;
+            --gold-primary: #D4AF37;
+            --text-white: #FAFAFA;
+            --text-dim: rgba(250, 250, 250, 0.7);
+            --card-bg: rgba(0, 0, 0, 0.3);
+            --border-spec: 1px solid rgba(212, 175, 55, 0.15);
+
+            /* Campus Color Palettes */
+            --color-main: #E67E22;
+            /* Main Campus */
+            --color-stacruz: #2980B9;
+            /* Sta. Cruz */
+            --color-torrijos: #27AE60;
+            /* Torrijos */
+            --color-gasan: #C0392B;
+            /* Gasan */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle, var(--burgundy-deep) 0%, var(--burgundy-light) 100%);
+            color: var(--text-white);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        /* --- CONTENT TEMPLATE LAYOUT (NO HEADER CONTAINER) --- */
+        .content {
+            max-width: 1200px;
+            width: 92%;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+            margin-top: 40px;
+            /* Reduced since header-placeholder is gone */
+            margin-bottom: 60px;
+            /* Clears navigation footer boundaries */
+        }
+
+        .page-header {
+            text-align: left;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--gold-primary);
+            padding-left: 15px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-dim);
+            margin: 5px 0 0 0;
+            font-weight: 400;
+        }
+
+        /* --- DISPLAY DASHBOARD CONTAINER --- */
+        .dashboard-card {
+            background: var(--card-bg);
+            border: var(--border-spec);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            height: 62vh;
+            /* Scales beautifully inside viewport frames */
+            position: relative;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="nav-placeholder"></div>
+
+    <div class="content">
+        <div class="page-header">
+            <h1>Higher Education Program</h1>
+            <div class="subtitle">Undergraduate Enrollment Trends by Campus</div>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="chart-wrapper">
+                <canvas id="enrollmentTrendChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        const ctx = document.getElementById('enrollmentTrendChart').getContext('2d');
+
+        // Accurate alignment array parameters corresponding directly to historic data matrices
+        const labels = [
+            ['AY 2022-23', 'Sem 2'],
+            ['AY 2023-24', 'Sem 1'],
+            ['AY 2023-24', 'Sem 2'],
+            ['AY 2024-25', 'Sem 1'],
+            ['AY 2024-25', 'Sem 2'],
+            ['AY 2025-26', 'Sem 1'],
+            ['AY 2025-26', 'Sem 2']
+        ];
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Main',
+                        data: [6971, 7313, 7084, 7719, 7505, 8090, 8337],
+                        backgroundColor: '#E67E22',
+                        borderWidth: 0
+                    },
+                    {
+                        label: 'Sta. Cruz',
+                        data: [472, 983, 960, 982, 965, 918, 893],
+                        backgroundColor: '#2980B9',
+                        borderWidth: 0
+                    },
+                    {
+                        label: 'Torrijos',
+                        data: [112, 243, 215, 347, 338, 298, 298],
+                        backgroundColor: '#27AE60',
+                        borderWidth: 0
+                    },
+                    {
+                        label: 'Gasan',
+                        data: [283, 387, 347, 430, 396, 390, 356],
+                        backgroundColor: '#C0392B',
+                        borderWidth: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        grid: { display: false },
+                        ticks: {
+                            color: 'rgba(250, 250, 250, 0.7)',
+                            font: { family: 'Montserrat', size: 11, weight: 500 }
+                        }
+                    },
+                    y: {
+                        stacked: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.07)' },
+                        border: { dash: [4, 4] },
+                        ticks: {
+                            color: 'rgba(250, 250, 250, 0.7)',
+                            font: { family: 'Montserrat', size: 11 }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: '#FAFAFA',
+                            padding: 20,
+                            font: { family: 'Montserrat', size: 12, weight: 600 }
+                        }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        backgroundColor: 'rgba(15, 3, 4, 0.95)',
+                        titleFont: { family: 'Montserrat', weight: 700 },
+                        bodyFont: { family: 'Montserrat' },
+                        borderColor: 'rgba(212, 175, 55, 0.3)',
+                        borderWidth: 1
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="comp.js"></script>
+</body>
+
+</html>

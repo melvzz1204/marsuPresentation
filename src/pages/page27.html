@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarSU Accomplishments - CHED-CBIE Training</title>
+    <!-- Premium Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght=600;700&family=Montserrat:wght=300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --burgundy-deep: #4A0E17;
+            --burgundy-light: #2A080C;
+            --gold-primary: #D4AF37;
+            --text-white: #FAFAFA;
+            --text-dim: rgba(250, 250, 250, 0.7);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle, var(--burgundy-deep) 0%, var(--burgundy-light) 100%);
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-x: hidden;
+        }
+
+        /* --- CONTENT PLATFORM TEMPLATE --- */
+        .content {
+            max-width: 1100px;
+            width: 90%;
+            margin: 40px auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            margin-top: -15px;
+        }
+
+        /* --- EDITORIAL STACKED LAYOUT --- */
+        .editorial-panel {
+            text-align: center;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.15rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin: 0;
+            line-height: 1.3;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- PHOTOGRAPHIC DISPLAY CONTAINER PANEL --- */
+        .photo-frame {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            width: 100%;
+            max-height: 50vh;
+            display: flex;
+            justify-content: center;
+            background: transparent;
+            margin-bottom: 30px;
+        }
+
+        .photo-frame img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 50vh;
+            object-fit: contain;
+            border-radius: 8px;
+            display: block;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Semi-transparent Vignette Caption Layer overlay positioned within image bounds */
+        .photo-caption-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            background: linear-gradient(to top, rgba(42, 8, 12, 0.95) 0%, rgba(74, 14, 23, 0.7) 60%, transparent 100%);
+            padding: 20px 30px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            text-align: left;
+        }
+
+        .overlay-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-white);
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+
+        .overlay-date {
+            font-size: 0.75rem;
+            color: var(--gold-primary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- ARTICLE TEXT BLOCK --- */
+        .article-body {
+            font-size: 0.9rem;
+            line-height: 1.75;
+            color: var(--text-dim);
+            font-weight: 400;
+            max-width: 1050px;
+            text-align: justify;
+            letter-spacing: 0.2px;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Global Navigation Injected Component -->
+    <div id="nav-placeholder"></div>
+
+    <div class="content">
+
+        <!-- Top Block: Typographic Title -->
+        <div class="editorial-panel">
+            <h1>Marinduque State University Among 30 Philippine HEIs Completing CHED–CBIE Internationalization
+                Leadership Training</h1>
+        </div>
+
+        <!-- Center Block: Photographic Portrait Frame -->
+        <div class="photo-frame">
+            <img src="../assets/accom8.png"
+                alt="CHED-CBIE Internationalization Leadership Training Cohort Group Portrait">
+            <div class="photo-caption-overlay">
+                <div class="overlay-title">Leading Internationalization: Strengthening Institutional Capacity and
+                    Canada–Philippines Linkages Training</div>
+                <div class="overlay-date">Jointly organized by CHED and CBIE</div>
+            </div>
+        </div>
+
+        <!-- Bottom Block: Article Presentation Copy -->
+        <p class="article-body">
+            Marinduque State University (MarSU) proudly marks another milestone in its internationalization journey as
+            its institutional representatives successfully completed the week-long Leading Internationalization:
+            Strengthening Institutional Capacity and Canada–Philippines Linkages training. MarSU is among only 30
+            Philippine Higher Education Institutions nationwide selected through a competitive process to participate in
+            this prestigious program organized by the Commission on Higher Education (CHED) and the Canadian Bureau for
+            International Education (CBIE), with support from Global Affairs Canada under the Indo-Pacific Strategy.
+        </p>
+
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="comp.js"></script>
+</body>
+
+</html>

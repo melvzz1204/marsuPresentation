@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher Education Program</title>
+    <!-- Cohesive Presentation Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    :root {
+        --burgundy-deep: #4A0E17;
+        --burgundy-dark: #2A080C;
+        --gold-primary: #D4AF37;
+        --gold-light: #F3E5AB;
+        --text-white: #FAFAFA;
+        --card-bg: rgba(255, 255, 255, 0.03);
+        --card-border: rgba(212, 175, 55, 0.15);
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Montserrat', sans-serif;
+        background: radial-gradient(circle, var(--burgundy-deep) 0%, var(--burgundy-dark) 100%);
+        color: var(--text-white);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .slide-container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 60px 40px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Header Layout */
+    .slide-header {
+        text-align: left;
+        margin-bottom: 40px;
+        border-left: 4px solid var(--gold-primary);
+        padding-left: 20px;
+    }
+
+    h1 {
+        font-family: 'Cinzel', serif;
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--gold-primary);
+        letter-spacing: 1px;
+        margin: 0 0 8px 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    p {
+        font-size: 1rem;
+        font-weight: 300;
+        color: var(--gold-light);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin: 0;
+        opacity: 0.8;
+    }
+
+    /* Grid Layout for Presentation Items */
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin-top: 20px;
+    }
+
+    /* Executive Content Cards */
+    .metric-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 6px;
+        padding: 30px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .metric-card:hover {
+        border-color: var(--gold-primary);
+        background: rgba(255, 255, 255, 0.06);
+        transform: translateY(-2px);
+    }
+
+    /* Elegant diamond bullet replacement */
+    .metric-icon {
+        color: var(--gold-primary);
+        font-size: 1.2rem;
+        margin-right: 20px;
+        flex-shrink: 0;
+    }
+
+    .metric-text {
+        font-size: 1.2rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        line-height: 1.4;
+    }
+
+    /* Responsive Design for smaller screens/projectors */
+    @media (max-width: 768px) {
+        .slide-container {
+            padding: 30px 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .grid-container {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .metric-card {
+            padding: 20px;
+        }
+    }
+</style>
+
+<body>
+    <div id="nav-placeholder"></div>
+    <div class="slide-container">
+        <!-- Slide Header -->
+        <div class="slide-header">
+            <h1>Higher Education Program</h1>
+            <p>For the interim period ended June 30, 2026</p>
+        </div>
+
+        <!-- Styled Content Grid (Replacing the raw <ul>) -->
+        <div class="grid-container">
+            <div class="metric-card">
+                <span class="metric-icon">✦</span>
+                <div class="metric-text">Performance in the licensure examinations</div>
+            </div>
+
+            <div class="metric-card">
+                <span class="metric-icon">✦</span>
+                <div class="metric-text">Employability of graduates</div>
+            </div>
+
+            <div class="metric-card">
+                <span class="metric-icon">✦</span>
+                <div class="metric-text">Enrollment in priority programs</div>
+            </div>
+
+            <div class="metric-card">
+                <span class="metric-icon">✦</span>
+                <div class="metric-text">Accreditation of undergraduate programs</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="comp.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Component</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    /* Ensure the placeholder component container itself doesn't cause hidden layout constraints */
+    #footer-placeholder {
+        display: contents !important;
+    }
+
+    /* --- PREMIUM PRESENTATION FOOTER REDESIGN --- */
+    .presentation-footer {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+
+        /* Layout */
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+
+        /* Padding & Fluid Height (Fixes the vertical overflow bug) */
+        padding: 12px 40px !important;
+        min-height: 65px !important;
+
+        /* Premium Styling: Frosted Glass Dark Onyx Blend */
+        background: rgba(15, 3, 4, 0.85) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+
+        /* High-end Subtle Accent Border */
+        border-top: 1px solid rgba(212, 175, 55, 0.3) !important;
+        box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.5) !important;
+        z-index: 9999 !important;
+    }
+
+    /* Left Metadata Configuration */
+    .footer-info {
+        text-align: left !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        gap: 4px !important;
+        max-width: 70% !important;
+    }
+
+    .info-line {
+        font-family: 'Montserrat', sans-serif !important;
+        color: rgba(250, 250, 250, 0.75) !important;
+        font-size: 11px !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.4px !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
+        /* Strictly forces text to stay on its designated row */
+    }
+
+    /* Elegant Brand Highlight */
+    .info-line strong {
+        color: #D4AF37 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.8px !important;
+    }
+
+    /* Interactive Presentation Links */
+    .info-line a {
+        color: #F3E5AB !important;
+        text-decoration: none !important;
+        border-bottom: 1px solid transparent !important;
+        transition: all 0.2s ease !important;
+    }
+
+    .info-line a:hover {
+        color: #D4AF37 !important;
+        border-bottom-color: #D4AF37 !important;
+    }
+
+    /* Clean Geometric Dividers */
+    .footer-separator {
+        margin: 0 10px !important;
+        color: rgba(212, 175, 55, 0.35) !important;
+        font-weight: 300 !important;
+    }
+
+    /* Right Badges Configuration */
+    .image-main {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 18px !important;
+        height: auto !important;
+    }
+
+    .image-main img {
+        height: 34px !important;
+        /* Clean visual balance against text rows */
+        width: auto !important;
+        object-fit: contain !important;
+        filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.5)) !important;
+        opacity: 0.95 !important;
+        transition: transform 0.2s ease !important;
+    }
+
+    .image-main img:hover {
+        transform: scale(1.05);
+    }
+
+    /* Projector / Screen Responsiveness Safety Net */
+    @media (max-width: 900px) {
+        .presentation-footer {
+            padding: 12px 20px !important;
+        }
+
+        .info-line {
+            font-size: 10px !important;
+        }
+    }
+</style>
+
+<body>
+
+    <footer class="presentation-footer">
+        <!-- Left Section: Clean, structured institutional credentials -->
+        <div class="footer-info">
+            <div class="info-line">
+                <strong>MARSU</strong>
+                <span class="footer-separator">│</span>
+                Panfilo M. Manguera Sr. Rd., Tanza, Boac, Marinduque, Philippines
+            </div>
+            <div class="info-line">
+                <a href="https://www.marsu.edu.ph" target="_blank">www.marsu.edu.ph</a>
+                <span class="footer-separator">•</span>
+                <a href="mailto:president@marsu.edu.ph">president@marsu.edu.ph</a>
+                <span class="footer-separator">•</span>
+                <span>042 332 2728</span>
+            </div>
+        </div>
+
+        <!-- Right Section: Aligned Partner Badges -->
+        <div class="image-main">
+            <img src="../assets/bagong.png" alt="Bagong Pilipinas">
+            <img src="../assets/highereduc.png" alt="Higher Education">
+            <img src="../assets/wuriicons.png" alt="WURI Ranking">
+        </div>
+    </footer>
+
+</body>
+
+</html>
