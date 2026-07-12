@@ -10,7 +10,7 @@ export default defineConfig({
         sample: resolve(__dirname, "sample.html"),
         home: resolve(__dirname, "home.html"),
         loadingempower: resolve(__dirname, "loadingempower.html"),
-        pages: resolve(__dirname, "./src/pages/page1.html"),
+        pages: resolve(__dirname, "./src/pages"),
       },
     },
   },
